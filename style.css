@@ -1,0 +1,6 @@
+canvas {
+	border: solid black 1px;
+	background-image: url("homer.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
