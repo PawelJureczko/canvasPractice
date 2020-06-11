@@ -5,6 +5,7 @@ const pause = document.getElementById("pause");
 
 var raf;
 
+let flag = false;
 let theme = new Audio("Simpsons.mp3");
 let audio = new Audio("Homer1.mp3");
 let audio1 = new Audio("Homer2.mp3");
@@ -34,7 +35,7 @@ var ball = {
 	color: "red",
 	draw: function () {
 		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
+		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
 		ctx.closePath();
 		ctx.fillStyle = this.color;
 		ctx.fill();
@@ -52,8 +53,6 @@ const changeColor = (numer) => {
 		ball.color === "red";
 	}
 };
-
-
 
 function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -74,18 +73,23 @@ function draw() {
 }
 
 play.addEventListener("click", function (e) {
-	raf = window.requestAnimationFrame(draw);
-	theme.play();
+	if (!flag) {
+		window.requestAnimationFrame(draw);
+		theme.play();
+		flag = true;
+	}
 });
 
 pause.addEventListener("click", function (e) {
 	window.cancelAnimationFrame(raf);
 	theme.pause();
+	flag = false;
 });
 
 canvas.addEventListener("click", function (e) {
-	ball.x=e.offsetX; 
-	ball.y=e.offsetY;
+	ball.x = e.offsetX;
+	ball.y = e.offsetY;
+	console.log(ball.x, ball.y);
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	ball.draw();
