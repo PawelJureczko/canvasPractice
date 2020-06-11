@@ -1,5 +1,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+const play = document.getElementById("start");
+const pause = document.getElementById("pause");
 
 var raf;
 
@@ -24,7 +26,7 @@ let audioPlay = () => {
 	return randomed;
 };
 var ball = {
-	x: 100,
+	x: 250,
 	y: 120,
 	vx: 5,
 	vy: 2,
@@ -32,7 +34,7 @@ var ball = {
 	color: "red",
 	draw: function () {
 		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+		ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
 		ctx.closePath();
 		ctx.fillStyle = this.color;
 		ctx.fill();
@@ -50,6 +52,8 @@ const changeColor = (numer) => {
 		ball.color === "red";
 	}
 };
+
+
 
 function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -69,14 +73,22 @@ function draw() {
 	raf = window.requestAnimationFrame(draw);
 }
 
-canvas.addEventListener("mouseenter", function (e) {
+play.addEventListener("click", function (e) {
 	raf = window.requestAnimationFrame(draw);
 	theme.play();
 });
 
-canvas.addEventListener("mouseleave", function (e) {
+pause.addEventListener("click", function (e) {
 	window.cancelAnimationFrame(raf);
 	theme.pause();
+});
+
+canvas.addEventListener("click", function (e) {
+	ball.x=e.offsetX; 
+	ball.y=e.offsetY;
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ball.draw();
 });
 
 ball.draw();
