@@ -11,6 +11,7 @@ let theme = new Audio("Simpsons.mp3");
 let audio = new Audio("Homer1.mp3");
 let audio1 = new Audio("Homer2.mp3");
 let audio2 = new Audio("Homer3.mp3");
+theme.volume = 0.5;
 
 let audioPlay = () => {
 	let randomed = Math.random() * 2;
