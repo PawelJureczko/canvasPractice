@@ -46,10 +46,12 @@ var ball = {
 	},
 };
 
-const changeColor = (numer) => {
-	if (numer === 0) {
+const dohVolume = () => {};
+
+const changeColor = (number) => {
+	if (number === 0) {
 		ball.color = "#33ccff";
-	} else if (numer === 1) {
+	} else if (number === 1) {
 		ball.color = "#ffcc66";
 	} else {
 		ball.color === "#006600";
@@ -84,9 +86,15 @@ play.addEventListener("click", function (e) {
 
 volume.addEventListener("change", function (e) {
 	theme.volume = e.target.value / 100;
+	audio.volume = e.target.value / 100;
+	audio1.volume = e.target.value / 100;
+	audio2.volume = e.target.value / 100;
 });
 volume.addEventListener("mousemove", function (e) {
 	theme.volume = e.target.value / 100;
+	audio.volume = e.target.value / 100;
+	audio1.volume = e.target.value / 100;
+	audio2.volume = e.target.value / 100;
 });
 
 pause.addEventListener("click", function (e) {
