@@ -2,6 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 const play = document.getElementById("start");
 const pause = document.getElementById("pause");
+const volume = document.getElementById("volume");
 
 var raf;
 
@@ -26,6 +27,7 @@ let audioPlay = () => {
 	}
 	return randomed;
 };
+
 var ball = {
 	x: 250,
 	y: 120,
@@ -78,6 +80,10 @@ play.addEventListener("click", function (e) {
 		theme.play();
 		flag = true;
 	}
+});
+
+volume.addEventListener("change", function (e) {
+	theme.volume = e.target.value / 100;
 });
 
 pause.addEventListener("click", function (e) {
