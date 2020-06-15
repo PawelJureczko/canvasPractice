@@ -5,24 +5,26 @@ canvas {
 	background-size: 100%;
 }
 
-#container
-{
-  height: 400px;
-  position: relative;
-  width: 400px;
+#container {
+	height: 400px;
+	position: relative;
+	width: 400px;
 }
-#viewport
-{
-  height: 100%;
-  width: 100%;
+#viewport {
+	height: 100%;
+	width: 100%;
 }
-#controls
-{
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
+#controls {
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
 }
-button{
+button {
 	justify-content: right;
+}
+
+p {
+	color: white;
+	font-size: 20px;
 }

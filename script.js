@@ -3,6 +3,7 @@ var ctx = canvas.getContext("2d");
 const play = document.getElementById("start");
 const pause = document.getElementById("pause");
 const volume = document.getElementById("volume");
+const ballSize = document.getElementById("ballSize");
 
 var raf;
 
@@ -35,7 +36,7 @@ var ball = {
 	vx: 5,
 	vy: 2,
 	radius: 25,
-	color: "red",
+	color: "#66ff66",
 	draw: function () {
 		ctx.beginPath();
 		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
@@ -45,15 +46,13 @@ var ball = {
 	},
 };
 
-const playMusic = () => {};
-
 const changeColor = (numer) => {
 	if (numer === 0) {
-		ball.color = "green";
+		ball.color = "#33ccff";
 	} else if (numer === 1) {
-		ball.color = "grey";
+		ball.color = "#ffcc66";
 	} else {
-		ball.color === "red";
+		ball.color === "#006600";
 	}
 };
 
@@ -86,6 +85,9 @@ play.addEventListener("click", function (e) {
 volume.addEventListener("change", function (e) {
 	theme.volume = e.target.value / 100;
 });
+volume.addEventListener("mousemove", function (e) {
+	theme.volume = e.target.value / 100;
+});
 
 pause.addEventListener("click", function (e) {
 	window.cancelAnimationFrame(raf);
@@ -96,9 +98,22 @@ pause.addEventListener("click", function (e) {
 canvas.addEventListener("click", function (e) {
 	ball.x = e.offsetX;
 	ball.y = e.offsetY;
-	console.log(ball.x, ball.y);
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+	ball.draw();
+});
+
+ballSize.addEventListener("change", function (e) {
+	ball.radius = e.target.value;
+	console.log(ball.radius);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ball.draw();
+});
+
+ballSize.addEventListener("mousemove", function (e) {
+	ball.radius = e.target.value;
+	console.log(ball.radius);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ball.draw();
 });
 
